@@ -55,52 +55,54 @@ class _LoginPasswordScreenState extends State<LoginPasswordScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            SizedBox(height: height / 4),
-            const LogoWidget(),
-            const Text(
-              'Ahora, tu contraseña',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 16.0,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              SizedBox(height: height / 4),
+              const LogoWidget(),
+              const Text(
+                'Ahora, tu contraseña',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 16.0,
+                ),
               ),
-            ),
-            const SizedBox(height: 8.0),
-            Form(
-              key: formKey,
-              child: TextFormField(
-                onChanged: (value) => password = value,
-                obscureText: !showPassword,
-                validator: validators['password'],
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  labelText: 'Contraseña',
-                  suffixIcon: IconButton(
-                    icon: Icon(showPassword ? Icons.visibility : Icons.visibility_off),
-                    onPressed: () {
-                      setState(() {
-                        showPassword = !showPassword;
-                        ToastUtils.info(showPassword ? 'Mostrando contraseña' : 'Ocultando contraseña');
-                      });
-                    },
+              const SizedBox(height: 8.0),
+              Form(
+                key: formKey,
+                child: TextFormField(
+                  onChanged: (value) => password = value,
+                  obscureText: !showPassword,
+                  validator: validators['password'],
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    labelText: 'Contraseña',
+                    suffixIcon: IconButton(
+                      icon: Icon(showPassword ? Icons.visibility : Icons.visibility_off),
+                      onPressed: () {
+                        setState(() {
+                          showPassword = !showPassword;
+                          ToastUtils.info(showPassword ? 'Mostrando contraseña' : 'Ocultando contraseña');
+                        });
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () => signIn(authProvider, email),
-              child: const Text('Iniciar sesión'),
-            ),
-            TextButton(
-              onPressed: () {
-                context.pop();
-              },
-              child: const Text('Este no es mi usuario'),
-            ),
-          ],
+              const SizedBox(height: 20.0),
+              ElevatedButton(
+                onPressed: () => signIn(authProvider, email),
+                child: const Text('Iniciar sesión'),
+              ),
+              TextButton(
+                onPressed: () {
+                  context.pop();
+                },
+                child: const Text('Este no es mi usuario'),
+              ),
+            ],
+          ),
         ),
       ),
     );

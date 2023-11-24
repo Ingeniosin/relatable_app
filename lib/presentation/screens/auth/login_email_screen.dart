@@ -81,46 +81,48 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            SizedBox(height: height / 4),
-            const LogoWidget(),
-            const Text(
-              'Primero lo primero, ¿Cuál es tu correo electronico?',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 16.0,
-              ),
-            ),
-            const SizedBox(height: 8.0),
-            Form(
-              key: formKey,
-              child: TextFormField(
-                validator: validators['email'],
-                onChanged: (value) => email = value,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Correo electronico',
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              SizedBox(height: height / 4),
+              const LogoWidget(),
+              const Text(
+                'Primero lo primero, ¿Cuál es tu correo electronico?',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 16.0,
                 ),
               ),
-            ),
-            const SizedBox(height: 20.0),
-            SignInButton(
-              Buttons.google,
-              text: "Iniciar sesión con Google",
-              onPressed: () => signInWithGoogle(authProvider),
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () => submit(authProvider),
-              child: const Text('Continuar'),
-            ),
-            TextButton(
-              onPressed: register,
-              child: const Text('No tengo usuario'),
-            ),
-          ],
+              const SizedBox(height: 8.0),
+              Form(
+                key: formKey,
+                child: TextFormField(
+                  validator: validators['email'],
+                  onChanged: (value) => email = value,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Correo electronico',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              SignInButton(
+                Buttons.google,
+                text: "Iniciar sesión con Google",
+                onPressed: () => signInWithGoogle(authProvider),
+              ),
+              const SizedBox(height: 20.0),
+              ElevatedButton(
+                onPressed: () => submit(authProvider),
+                child: const Text('Continuar'),
+              ),
+              TextButton(
+                onPressed: register,
+                child: const Text('No tengo usuario'),
+              ),
+            ],
+          ),
         ),
       ),
     );

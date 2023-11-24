@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:relatable_app/config/router/app_router.dart';
 import 'package:relatable_app/presentation/providers/auth_provider.dart';
 
-import 'config/firebase/firebase_options.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
